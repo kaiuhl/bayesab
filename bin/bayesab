@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/bayesab"
+
+args = {
+  control_success: ARGV[0],
+  control_fail: ARGV[1],
+  experiment_success: ARGV[2],
+  experiment_fail: ARGV[3]
+}
+
+positive_integer_test = /\A[+]?[0-9]+\z/
+invalid_argument = false
+
+args.each do |key, value|
+  unless !!(value =~ positive_integer_test)
+    puts
+    puts "#{key.to_s} must be a positive integer."
+    puts
+    invalid_argument = true
+    break
+  end
+end
+
+if invalid_argument
+  puts "Usage: bayesab control_success control_fail experiment_success experiment_fail"
+  puts
+  exit
+end
+
+puts
+
+result = Bayesab::probability(args[:control_success].to_i,
+  args[:control_fail].to_i, args[:experiment_success].to_i,
+  args[:experiment_fail].to_i)
+
+control_total = args[:control_success].to_i + args[:control_fail].to_i
+control_ratio = args[:control_success].to_f / control_total
+puts "Control: success=#{args[:control_success]}, fail=#{args[:control_fail]}, total=#{control_total}, rate=#{control_ratio}"
+
+experiment_total = args[:experiment_success].to_i + args[:experiment_fail].to_i
+experiment_ratio = args[:experiment_success].to_f / experiment_total
+puts "Experiment: success=#{args[:experiment_success]}, fail=#{args[:experiment_fail]}, total=#{experiment_total}, rate=#{experiment_ratio}"
+
+puts "Probability that experiment is an improvement: #{result}"
+puts "Inverse: #{1 - result}"
+puts
+puts
