@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Alan Johnson"]
   spec.email         = ["alan@teamtreehouse.com"]
   spec.summary       = %q{Command line tool and library for analyzing Bayesian A/B tests.}
-  spec.description   = %q{Command line tool and library for analyzing Bayesian A/B tests.}}
+  spec.description   = %q{Command line tool and library for analyzing Bayesian A/B tests.}
   spec.homepage      = "https://github.com/commondream/bayesab"
   spec.license       = "MIT"
 
