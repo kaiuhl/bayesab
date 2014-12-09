@@ -5,7 +5,7 @@ it because we've been a/b testing a lot at Treehouse lately, and it's easier to
 share code than tell people how to calculate things.
 
 The algorithm used here is a Ruby translation of the Julia code shared in Evan
-Williams' really good [A Formula for Bayesian A/B Testing](http://www.evanmiller.org/bayesian-ab-testing.html).
+Miller's really good [A Formula for Bayesian A/B Testing](http://www.evanmiller.org/bayesian-ab-testing.html).
 
 ## Installation
 
